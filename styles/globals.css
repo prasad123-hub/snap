@@ -79,3 +79,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+.CodeMirror__Main__Editor div {
+  @apply block whitespace-pre-wrap break-normal break-words rounded-md px-1;
+}

@@ -2,7 +2,8 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { Button, buttonVariants } from "@/components/ui/button"
-import { MotionA, MotionDiv, MotionP } from "@/components/client"
+import { MotionA, MotionDiv } from "@/components/client"
+import { SnapCodeArea } from "@/components/snap-code-area"
 
 export default function IndexPage() {
   return (
@@ -85,24 +86,25 @@ export default function IndexPage() {
                 </p>
               </MotionDiv>
             </div>
-            {/* <MotionDiv
-            className="relative mt-4 flex flex-col gap-4 md:flex-row"
-            initial={{ opacity: 0, top: 20 }}
-            animate={{ opacity: 1, top: 0 }}
-            transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
-          >
-            <Button variant="outline" size="lg">
-              View Talents
-              <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" />
-            </Button>
-            <Button variant="outline" size="lg">
-              Explore Work
-              <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" />
-            </Button>
-          </MotionDiv> */}
+            <MotionDiv
+              className="relative mt-4 flex flex-col gap-4 md:flex-row"
+              initial={{ opacity: 0, top: 20 }}
+              animate={{ opacity: 1, top: 0 }}
+              transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+            >
+              <Button variant="outline" size="lg">
+                View Talents
+                {/* <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" /> */}
+              </Button>
+              <Button variant="outline" size="lg">
+                Explore Work
+                {/* <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" /> */}
+              </Button>
+            </MotionDiv>
           </section>
         </div>
       </div>
+      <SnapCodeArea />
     </section>
   )
 }
