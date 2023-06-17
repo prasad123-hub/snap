@@ -104,7 +104,9 @@ export default function IndexPage() {
           </section>
         </div>
       </div>
-      <SnapCodeArea />
+      <div className="pb-12 md:pb-16 ">
+        <SnapCodeArea />
+      </div>
     </section>
   )
 }

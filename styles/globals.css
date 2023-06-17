@@ -81,5 +81,9 @@
 }
 
 .CodeMirror__Main__Editor div {
-  @apply block whitespace-pre-wrap break-normal break-words rounded-md px-1;
+  @apply block whitespace-pre-wrap break-normal break-words px-1 pb-2 pt-5;
+}
+
+.cm-editor {
+  @apply rounded-xl;
 }
