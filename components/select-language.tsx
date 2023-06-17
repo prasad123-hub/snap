@@ -3,6 +3,7 @@
 import * as React from "react"
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 
+import { LANGUAGES } from "@/config/constants"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -44,17 +45,17 @@ export function SelectLanguage({
         </DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>
-          Choose Langauge ({`${Object.keys(languages).length}`})
+          Choose Langauge ({LANGUAGES.length})
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {Object.keys(languages).map((key) => {
+        {LANGUAGES.map((lang) => {
           return (
             <DropdownMenuCheckboxItem
-              key={key}
-              checked={selectedLanguage === key}
-              onCheckedChange={() => setLanguage(key)}
+              key={lang.id}
+              checked={selectedLanguage === lang.id}
+              onCheckedChange={() => setLanguage(lang.id)}
             >
-              {key}
+              {lang.label}
             </DropdownMenuCheckboxItem>
           )
         })}

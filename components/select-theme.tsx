@@ -34,7 +34,7 @@ export function SelectTheme({
           <Icons.arrowDown className="ml-4 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="h-96 w-64 overflow-y-scroll">
+      <DropdownMenuContent className="h-96 w-56 overflow-y-scroll">
         <DropdownMenuLabel className="font-bold">
           Selected Theme
         </DropdownMenuLabel>
@@ -43,9 +43,7 @@ export function SelectTheme({
           {selectedTheme}
         </DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
-        <DropdownMenuLabel>
-          Choose Theme ({`${Object.keys(themes).length}`})
-        </DropdownMenuLabel>
+        <DropdownMenuLabel>Choose Theme ({THEMES.length})</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {THEMES.map((theme) => {
           return (

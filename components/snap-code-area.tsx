@@ -1,17 +1,18 @@
 "use client"
 
 import { useState } from "react"
-import Image from "next/image"
 import { EditorView } from "@codemirror/view"
 import { langs, loadLanguage } from "@uiw/codemirror-extensions-langs"
 import * as themes from "@uiw/codemirror-themes-all"
 import CodeMirror from "@uiw/react-codemirror"
 import clsx from "clsx"
 
+import { DEFAULT_BASE_SETUP, DEFAULT_CODE } from "@/config/constants"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { SelectLanguage } from "@/components/select-language"
 
+import { BackgroundChanger } from "./background-changer"
 import { SelectTheme } from "./select-theme"
 
 export const getLanguage = (lang: string): keyof typeof langs => {
@@ -26,44 +27,22 @@ const getSeletecdTheme = (selectedTheme: string) => {
   return getTheme(selectedTheme)
 }
 
-export const DEFAULT_BASE_SETUP = {
-  foldGutter: false,
-  highlightActiveLine: false,
-  highlightActiveLineGutter: false,
-  indentOnInput: true,
-  lineNumbers: true,
-  syntaxHighlighting: true,
-  tabSize: 4,
-}
-
 export function SnapCodeArea() {
-  const [code, setCode] = useState<string>(`function getPromise(URL) {
-    let promise = new Promise(function (resolve, reject) {
-      let req = new XMLHttpRequest();
-      req.open("GET", URL);
-      req.onload = function () {
-        if (req.status == 200) {
-          resolve(req.response);
-        } else {
-          reject("There is an Error!");
-        }
-      };
-      req.send();
-    });
-    return promise;
-  }`)
+  const [code, setCode] = useState<string>(DEFAULT_CODE)
   const [language, setLanguage] = useState<string>("javascript")
   const [selectedTheme, setSelectedTheme] = useState<string>("githubDark")
-
-  console.log(typeof themes)
+  const [selectedBackground, setSelectedBackground] = useState<string>(
+    "linear-gradient(to left bottom, rgb(49, 46, 129), rgb(129, 140, 248), rgb(49, 46, 129))"
+  )
 
   return (
     <div className="mx-auto max-w-6xl rounded-md border border-border p-10">
       <div className="flex items-center justify-between">
         <div className="space-x-3">
-          <Button variant={"outline"}>
-            Change Backround <Icons.arrowDown className="ml-4 h-4 w-4" />
-          </Button>
+          <BackgroundChanger
+            setSelectedBackground={setSelectedBackground}
+            selectedBackground={selectedBackground}
+          />
           <SelectTheme
             setTheme={setSelectedTheme}
             themes={themes}
@@ -86,10 +65,18 @@ export function SnapCodeArea() {
         </div>
       </div>
       <div className="relative mt-4 min-h-min w-full rounded-md p-14">
-        <div className="absolute inset-0 z-0 h-full w-full bg-purple-600 object-cover"></div>
-        <div className="">
+        <div
+          className="absolute inset-0 z-0 h-full w-full"
+          style={{
+            background: `${selectedBackground}`,
+          }}
+        ></div>
+        <div className="relative">
+          <div className="absolute -top-6 left-4 rounded-t-md bg-white px-4 pb-2 pt-1.5 text-xs font-semibold text-black">
+            Made With Snap 💙
+          </div>
           <CodeMirror
-            className={clsx("CodeMirror__Main__Editor", "relative")}
+            className={clsx("CodeMirror__Main__Editor", "relative shadow-2xl")}
             //@ts-ignore
             theme={themes[getSeletecdTheme(selectedTheme)]}
             value={code}
@@ -100,7 +87,6 @@ export function SnapCodeArea() {
             ]}
             style={{
               fontSize: 16,
-              boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
             }}
             basicSetup={{
               ...DEFAULT_BASE_SETUP,
@@ -115,10 +101,7 @@ export function SnapCodeArea() {
               <input
                 id="file-name-input"
                 value={"snapcode.js"}
-                onChange={
-                  (e) => {}
-                  // handleConfigChange("fileName")(e.target.value)
-                }
+                onChange={(e) => {}}
                 className="absolute left-1/2 top-2 w-72 -translate-x-1/2 border-zinc-500 bg-transparent text-center text-xs font-extralight text-zinc-400 outline-none ring-0 focus:border-b-[0.1px]"
                 spellCheck={false}
                 contentEditable
