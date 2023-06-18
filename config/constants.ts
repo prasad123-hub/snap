@@ -1,13 +1,22 @@
-export const DEFAULT_CODE = `const myPromise = new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve("foo");
-  }, 300);
-});
+export const DEFAULT_CODE = `async function postJSON(data) {
+  try {
+    const response = await fetch("https://example.com/profile", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-myPromise
-  .then(handleFulfilledA, handleRejectedA)
-  .then(handleFulfilledB, handleRejectedB)
-  .then(handleFulfilledC, handleRejectedC);
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+const data = { username: "example" };
+postJSON(data);
 `
 
 export const DEFAULT_BASE_SETUP = {
