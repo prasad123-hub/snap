@@ -19,6 +19,12 @@ const data = { username: "example" };
 postJSON(data);
 `
 
+export const DEFAULT_LANGUAGE = "javascript"
+export const DEFAULT_THEME = "githubDark"
+export const DEFAULT_BACKGROUND =
+  "linear-gradient(to left bottom, rgb(49, 46, 129), rgb(129, 140, 248), rgb(49, 46, 129))"
+export const DEFAULT_TITLE = "code_snippet"
+
 export const DEFAULT_BASE_SETUP = {
   foldGutter: false,
   highlightActiveLine: false,

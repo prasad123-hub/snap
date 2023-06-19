@@ -1,6 +1,12 @@
 import React, { createContext, useReducer } from "react"
 
-import { DEFAULT_CODE } from "@/config/constants"
+import {
+  DEFAULT_BACKGROUND,
+  DEFAULT_CODE,
+  DEFAULT_LANGUAGE,
+  DEFAULT_THEME,
+  DEFAULT_TITLE,
+} from "@/config/constants"
 
 type InitialStateType = {
   code: string
@@ -12,11 +18,10 @@ type InitialStateType = {
 
 const initialState: InitialStateType = {
   code: DEFAULT_CODE,
-  language: "javascript",
-  selectedTheme: "githubDark",
-  selectedBackground:
-    "linear-gradient(to left bottom, rgb(49, 46, 129), rgb(129, 140, 248), rgb(49, 46, 129))",
-  title: "Code_Snippet",
+  language: DEFAULT_LANGUAGE,
+  selectedTheme: DEFAULT_THEME,
+  selectedBackground: DEFAULT_BACKGROUND,
+  title: DEFAULT_TITLE,
 }
 
 const ConfigContext = createContext<{
