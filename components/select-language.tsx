@@ -1,7 +1,5 @@
-"use client"
-
-import * as React from "react"
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
+import { useContext } from "react"
+import { ConfigContext } from "@/context/configContext"
 
 import { LANGUAGES } from "@/config/constants"
 import { Button } from "@/components/ui/button"
@@ -13,20 +11,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Icons } from "@/components/icons"
 
-import { Icons } from "./icons"
-
-interface SelectLanguageProps {
-  languages: {}
-  selectedLanguage: string
-  setLanguage: React.Dispatch<React.SetStateAction<string>>
-}
-
-export function SelectLanguage({
-  languages,
-  selectedLanguage,
-  setLanguage,
-}: SelectLanguageProps) {
+export function SelectLanguage() {
+  const { state, dispatch } = useContext(ConfigContext)
+  const { language } = state
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -41,7 +30,7 @@ export function SelectLanguage({
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem checked={true}>
-          {selectedLanguage}
+          {language}
         </DropdownMenuCheckboxItem>
         <DropdownMenuSeparator />
         <DropdownMenuLabel>
@@ -52,8 +41,10 @@ export function SelectLanguage({
           return (
             <DropdownMenuCheckboxItem
               key={lang.id}
-              checked={selectedLanguage === lang.id}
-              onCheckedChange={() => setLanguage(lang.id)}
+              checked={language === lang.id}
+              onCheckedChange={() =>
+                dispatch({ type: "UPDATE_LANGUAGE", payload: lang.id })
+              }
             >
               {lang.label}
             </DropdownMenuCheckboxItem>

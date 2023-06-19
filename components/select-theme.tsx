@@ -1,6 +1,5 @@
-"use client"
-
 import * as React from "react"
+import { ConfigContext } from "@/context/configContext"
 
 import { THEMES } from "@/config/constants"
 import { Button } from "@/components/ui/button"
@@ -15,17 +14,10 @@ import {
 
 import { Icons } from "./icons"
 
-interface SelectLanguageProps {
-  themes: {}
-  selectedTheme: string
-  setTheme: React.Dispatch<React.SetStateAction<string>>
-}
+export function SelectTheme() {
+  const { state, dispatch } = React.useContext(ConfigContext)
+  const { selectedTheme } = state
 
-export function SelectTheme({
-  themes,
-  selectedTheme,
-  setTheme,
-}: SelectLanguageProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,7 +42,9 @@ export function SelectTheme({
             <DropdownMenuCheckboxItem
               key={theme.id}
               checked={selectedTheme === theme.label}
-              onCheckedChange={() => setTheme(theme.id)}
+              onCheckedChange={() =>
+                dispatch({ type: "UPDATE_THEME", payload: theme.id })
+              }
             >
               {theme.label}
             </DropdownMenuCheckboxItem>

@@ -1,7 +1,5 @@
-"use client"
-
-import * as React from "react"
-import clsx from "clsx"
+import { useContext } from "react"
+import { ConfigContext } from "@/context/configContext"
 
 import { GRADIENTS } from "@/config/constants"
 import { Button } from "@/components/ui/button"
@@ -16,15 +14,17 @@ import {
 
 import { Icons } from "./icons"
 
-interface SelectLanguageProps {
-  selectedBackground: string
-  setSelectedBackground: React.Dispatch<React.SetStateAction<string>>
-}
+export function BackgroundChanger() {
+  const { state, dispatch } = useContext(ConfigContext)
+  const { selectedBackground } = state
 
-export function BackgroundChanger({
-  setSelectedBackground,
-  selectedBackground,
-}: SelectLanguageProps) {
+  const handleBackgroundChange = (code: string) => {
+    dispatch({
+      type: "UPDATE_BACKGROUND",
+      payload: code,
+    })
+  }
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -53,22 +53,10 @@ export function BackgroundChanger({
           Choose Background ({GRADIENTS.length})
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* {GRADIENTS.map((background) => (
-          <div
-            key={background.id}
-            onClick={() => setSelectedBackground(background.code)}
-            className="min-h-min w-full px-2"
-          >
-            <div className={`h-16 w-full rounded-md ${background.code}`}></div>
-            <p className="mt-2 text-sm font-semibold text-gray-500">
-              {background.name}
-            </p>
-          </div>
-        ))} */}
         {GRADIENTS.map((background, index) => (
           <DropdownMenuCheckboxItem key={background.id} className="px-2">
             <div
-              onClick={() => setSelectedBackground(background.code)}
+              onClick={() => handleBackgroundChange(background.code)}
               className="min-h-min w-full"
             >
               <div
