@@ -14,6 +14,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.21.7",
+    "@clerk/themes": "^1.7.5",
     "@codemirror/view": "^6.13.2",
     "@hookform/resolvers": "^3.1.1",
     "@prisma/client": "^4.15.0",
@@ -36,11 +38,13 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.0",
     "sharp": "^0.31.3",
+    "svix": "^1.4.12",
     "tailwind-merge": "^1.12.0",
     "tailwindcss-animate": "^1.0.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@clerk/types": "^3.46.0",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.7",

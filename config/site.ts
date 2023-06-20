@@ -6,11 +6,11 @@ export const siteConfig = {
     "Snap is a tool for creating beautiful images of code snippets. With Snap, you can easily create high-quality images of your code that are perfect for documentation, blog posts, and social media.",
   mainNav: [
     {
-      title: "Pricing",
-      href: "/",
+      title: "Dashboard",
+      href: "/dashboard",
     },
     {
-      title: "Snap Collection",
+      title: "Pricing",
       href: "/",
     },
   ],

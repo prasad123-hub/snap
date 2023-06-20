@@ -3,7 +3,7 @@ import { User } from "@clerk/nextjs/dist/types/server"
 
 import { SiteHeader } from "@/components/site-header"
 
-export default async function LandingLayoutProps({
+export default async function DashboardLayoutProps({
   children,
 }: {
   children: React.ReactNode
