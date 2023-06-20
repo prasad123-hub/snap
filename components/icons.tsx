@@ -1,7 +1,9 @@
 import {
   ArrowDown,
+  ChevronLeft,
   Copy,
   Download,
+  Loader2,
   LucideProps,
   Moon,
   SunMedium,
@@ -13,6 +15,8 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  spinner: Loader2,
+  chevronLeft: ChevronLeft,
   terminalSquare: TerminalSquare,
   sun: SunMedium,
   moon: Moon,
