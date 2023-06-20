@@ -3,6 +3,7 @@ import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { MotionA, MotionDiv } from "@/components/client"
+import { CtaButtons } from "@/components/cta-buttons"
 import { SnapCodeArea } from "@/components/snap-code-area"
 
 export default function IndexPage() {
@@ -54,13 +55,13 @@ export default function IndexPage() {
           <section className="relative flex flex-col items-center justify-center gap-8 ">
             <div className="flex flex-col items-center gap-4 text-center">
               <MotionA
-                href="/blog/unveiling-the-new-website"
+                href=""
                 className="z-10 inline-flex gap-2 rounded-full bg-background px-4 py-2 text-sm text-[#95A8C6] transition hover:text-white"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                View our top talents &rarr;
+                25+ Themes | 70+ Languages
               </MotionA>
               <MotionDiv
                 className="relative max-w-4xl"
@@ -74,15 +75,13 @@ export default function IndexPage() {
                 </h1>
               </MotionDiv>
               <MotionDiv
-                className="relative mt-4 max-w-lg"
+                className="relative mt-4 max-w-xl"
                 initial={{ opacity: 0, top: 20 }}
                 animate={{ opacity: 1, top: 0 }}
                 transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
               >
                 <p className="text-base text-[#7F92AF]">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum,
-                  nihil obcaecati. Possimus hic ea dolor placeat saepe,
-                  accusantium omnis! Vitae.
+                  {siteConfig.description}
                 </p>
               </MotionDiv>
             </div>
@@ -92,14 +91,7 @@ export default function IndexPage() {
               animate={{ opacity: 1, top: 0 }}
               transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
             >
-              <Button variant="outline" size="lg">
-                View Talents
-                {/* <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" /> */}
-              </Button>
-              <Button variant="outline" size="lg">
-                Explore Work
-                {/* <Icons.arrowRight className="ml-2 h-4 w-4 text-green-600" /> */}
-              </Button>
+              <CtaButtons />
             </MotionDiv>
           </section>
         </div>

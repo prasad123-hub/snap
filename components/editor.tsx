@@ -71,7 +71,7 @@ export function Editor() {
         indentWithTab
         onChange={(value) => {
           // setCode(value)
-          dispatch({ type: "SET_CODE", payload: value })
+          dispatch({ type: "UPDATE_CODE", payload: value })
         }}
       >
         <EditorTop />

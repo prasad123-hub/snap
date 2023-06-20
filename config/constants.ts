@@ -1,22 +1,15 @@
-export const DEFAULT_CODE = `async function postJSON(data) {
-  try {
-    const response = await fetch("https://example.com/profile", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-    console.log("Success:", result);
-  } catch (error) {
-    console.error("Error:", error);
-  }
+export const DEFAULT_CODE = `function foo() {
+	let b = 1;
+	function inner() {
+		return b;
+	}
+	return inner;
 }
+let get_func_inner = foo();
 
-const data = { username: "example" };
-postJSON(data);
+console.log(get_func_inner());
+console.log(get_func_inner());
+console.log(get_func_inner());
 `
 
 export const DEFAULT_LANGUAGE = "javascript"

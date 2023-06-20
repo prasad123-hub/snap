@@ -15,7 +15,10 @@ export function SnapCodeArea() {
 
   return (
     <ConfigProvider>
-      <div className="mx-auto max-w-6xl rounded-md border border-border p-10">
+      <div
+        id="#snap_code_area"
+        className="mx-auto max-w-6xl rounded-md border border-border p-10"
+      >
         <div className="flex items-center justify-between">
           <div className="space-x-3">
             <BackgroundChanger />

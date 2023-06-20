@@ -17,6 +17,7 @@ export function MainNav({ items }: MainNavProps) {
         <Icons.logo className="h-6 w-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
+
       {items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
@@ -36,6 +37,9 @@ export function MainNav({ items }: MainNavProps) {
           )}
         </nav>
       ) : null}
+      <span className="-ml-6 inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium text-green-400 ring-1 ring-inset ring-green-500/20">
+        Free Tier
+      </span>
     </div>
   )
 }
