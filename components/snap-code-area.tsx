@@ -18,9 +18,9 @@ export function SnapCodeArea() {
     <ConfigProvider>
       <div
         id="#snap_code_area"
-        className="mx-auto w-full max-w-6xl rounded-md border border-border p-10"
+        className="mx-auto w-full max-w-6xl rounded-md border border-border p-4 lg:p-10"
       >
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col items-center justify-between md:flex-row">
           <div className="space-x-3">
             <BackgroundChanger />
             <SelectTheme />

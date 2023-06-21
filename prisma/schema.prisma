@@ -34,7 +34,7 @@ model Snap {
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
   creatorId String
-  creator Customer @relation(fields: [creatorId], references: [id])
+  creator Customer @relation(fields: [creatorId], references: [clerkUserId])
 
   @@map(name: "snaps")
   @@index([creatorId])

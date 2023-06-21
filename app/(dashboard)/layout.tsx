@@ -4,7 +4,6 @@ import { UserButton, currentUser } from "@clerk/nextjs"
 import { dashboardConfig } from "@/config/dashboard"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { DashboardNav } from "@/components/dashboard-nav"
 import { MainNav } from "@/components/main-nav"
 
 export default async function DashboardLayoutProps({
@@ -35,12 +34,9 @@ export default async function DashboardLayoutProps({
           </nav>
         </div>
       </header>
-      <main className="mt-10 flex-1">
-        <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-          <aside className="hidden w-[200px] flex-col md:flex">
-            <DashboardNav />
-          </aside>
-          <div className="flex w-full flex-1 flex-col">{children}</div>
+      <main className="mt-2 flex-1">
+        <div className="w-full pb-10 md:px-10 lg:flex lg:flex-1 lg:flex-col">
+          {children}
         </div>
       </main>
     </div>

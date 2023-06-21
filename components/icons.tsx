@@ -7,9 +7,11 @@ import {
   Loader2,
   LucideProps,
   Moon,
+  MoreVertical,
   Settings,
   SunMedium,
   TerminalSquare,
+  Trash,
   Twitter,
   Wallet,
   type Icon as LucideIcon,
@@ -18,6 +20,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  trash: Trash,
   settings: Settings,
   wallet: Wallet,
   bookmark: Bookmark,
@@ -30,6 +33,7 @@ export const Icons = {
   arrowDown: ArrowDown,
   copy: Copy,
   download: Download,
+  elipsis: MoreVertical,
   logo: (props: LucideProps) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"

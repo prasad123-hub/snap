@@ -44,7 +44,7 @@ export function Editor() {
 
   return (
     <div
-      className="relative mt-4 min-h-min w-full p-14 "
+      className="relative mt-4 min-h-min w-full p-6 lg:p-14 "
       style={{
         background: `${selectedBackground}`,
       }}
