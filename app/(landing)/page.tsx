@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
@@ -96,9 +97,23 @@ export default function IndexPage() {
           </section>
         </div>
       </div>
-      <div className="pb-12 md:pb-16 ">
+      {/* <div className="pb-12 md:pb-16 ">
         <SnapCodeArea />
-      </div>
+      </div> */}
+      <MotionDiv
+        className="mx-auto mt-4 max-w-7xl rounded-lg px-4 pb-12 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, top: 20 }}
+        animate={{ opacity: 1, top: 0 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+      >
+        <Image
+          src="/code_snippet.png"
+          width={1200}
+          height={600}
+          className="rounded-lg object-cover "
+          alt="Code Snippet"
+        />
+      </MotionDiv>
     </section>
   )
 }

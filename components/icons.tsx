@@ -1,20 +1,26 @@
 import {
   ArrowDown,
+  Bookmark,
   ChevronLeft,
   Copy,
   Download,
   Loader2,
   LucideProps,
   Moon,
+  Settings,
   SunMedium,
   TerminalSquare,
   Twitter,
+  Wallet,
   type Icon as LucideIcon,
 } from "lucide-react"
 
 export type Icon = LucideIcon
 
 export const Icons = {
+  settings: Settings,
+  wallet: Wallet,
+  bookmark: Bookmark,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
   terminalSquare: TerminalSquare,

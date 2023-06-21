@@ -1,7 +1,11 @@
-import { currentUser } from "@clerk/nextjs"
+import Link from "next/link"
+import { UserButton, currentUser } from "@clerk/nextjs"
 import { User } from "@clerk/nextjs/dist/types/server"
 
-import { SiteHeader } from "@/components/site-header"
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
+import { MainNav } from "@/components/main-nav"
 
 export default async function LandingLayoutProps({
   children,
@@ -10,9 +14,29 @@ export default async function LandingLayoutProps({
 }) {
   const user = await currentUser()
   return (
-    <div className="relative flex min-h-screen flex-col">
-      <SiteHeader user={user as User} />
-      <div className="flex-1">{children}</div>
+    <div className="flex min-h-screen flex-col">
+      <header className="container sticky top-0 z-40 border-b border-border bg-background">
+        <div className="flex h-20 items-center justify-between py-6">
+          <MainNav items={siteConfig.mainNav} />
+          <nav>
+            {user ? (
+              <UserButton />
+            ) : (
+              <Link
+                href="/sign-in"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "px-4"
+                )}
+              >
+                Login
+              </Link>
+            )}
+          </nav>
+        </div>
+      </header>
+      <main className="flex-1">{children}</main>
+      {/* <SiteFooter /> */}
     </div>
   )
 }

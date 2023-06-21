@@ -14,6 +14,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache"
   },
   "dependencies": {
+    "@clerk/clerk-react": "^4.20.5",
     "@clerk/nextjs": "^4.21.7",
     "@clerk/themes": "^1.7.5",
     "@codemirror/view": "^6.13.2",
@@ -28,6 +29,7 @@
     "@uiw/react-codemirror": "^4.21.3",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
+    "encoding": "^0.1.13",
     "framer-motion": "^10.12.16",
     "html-to-image": "^1.11.11",
     "html2canvas": "^1.4.1",

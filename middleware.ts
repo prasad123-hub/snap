@@ -23,7 +23,7 @@ export default authMiddleware({
 
     if (!auth.userId) {
       // User is not signed in
-      url.pathname = "/"
+      url.pathname = "/sign-in"
       return NextResponse.redirect(url)
     }
   },

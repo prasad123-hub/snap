@@ -8,6 +8,7 @@ import { SelectLanguage } from "@/components/select-language"
 import { BackgroundChanger } from "./background-changer"
 import { DownloadAsImage } from "./download-as-image"
 import { Editor } from "./editor"
+import { SaveSnapForm } from "./save-snap-form"
 import { SelectTheme } from "./select-theme"
 
 export function SnapCodeArea() {
@@ -17,7 +18,7 @@ export function SnapCodeArea() {
     <ConfigProvider>
       <div
         id="#snap_code_area"
-        className="mx-auto max-w-6xl rounded-md border border-border p-10"
+        className="mx-auto w-full max-w-6xl rounded-md border border-border p-10"
       >
         <div className="flex items-center justify-between">
           <div className="space-x-3">
@@ -29,6 +30,9 @@ export function SnapCodeArea() {
         </div>
         <div ref={editorRef} id="#snippet" className="relative ">
           <Editor />
+        </div>
+        <div className="mt-4">
+          <SaveSnapForm />
         </div>
       </div>
     </ConfigProvider>

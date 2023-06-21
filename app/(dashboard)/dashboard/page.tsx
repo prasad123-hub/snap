@@ -1,3 +1,12 @@
+import { DashboardShell } from "@/components/shell"
+import { SnapCodeArea } from "@/components/snap-code-area"
+
 export default async function DashboardPage() {
-  return <h1>Dashboard</h1>
+  return (
+    <>
+      <DashboardShell>
+        <SnapCodeArea />
+      </DashboardShell>
+    </>
+  )
 }

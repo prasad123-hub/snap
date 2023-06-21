@@ -11,7 +11,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model User {
+model Customer {
   id            String    @id @default(cuid())
   clerkUserId   String    @unique @map(name: "clerk_user_id")
   Snap    Snap[]
@@ -21,7 +21,7 @@ model User {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 
-  @@map(name: "users")
+  @@map(name: "customers")
 }
 
 model Snap {
@@ -34,8 +34,7 @@ model Snap {
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
   creatorId String
-
-  creator User @relation(fields: [creatorId], references: [id])
+  creator Customer @relation(fields: [creatorId], references: [id])
 
   @@map(name: "snaps")
   @@index([creatorId])

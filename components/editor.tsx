@@ -41,6 +41,7 @@ export function Editor() {
   const { state, dispatch } = useContext(ConfigContext)
   // Destrcuturing state
   const { selectedBackground, selectedTheme, code, language, title } = state
+
   return (
     <div
       className="relative mt-4 min-h-min w-full p-14 "

@@ -56,7 +56,7 @@ export function EmailSignIn() {
       const response = await magicFlow
         .startMagicLinkFlow({
           emailAddressId: firstFactor.emailAddressId,
-          redirectUrl: `${window.location.origin}/`,
+          redirectUrl: `${window.location.origin}/dashboard`,
         })
         .catch(() => {
           toast({
@@ -78,7 +78,7 @@ export function EmailSignIn() {
       magicFlow.cancelMagicLinkFlow()
       if (response?.status === "complete") {
         await setActive({ session: response.createdSessionId })
-        router.push(``)
+        router.push("/dashboard")
       }
     } else {
       if (!signUpLoaded) return null
@@ -93,7 +93,7 @@ export function EmailSignIn() {
         description: "Check your inbox for a verification email.",
       })
       const response = await startMagicLinkFlow({
-        redirectUrl: `${window.location.origin}/`,
+        redirectUrl: `${window.location.origin}/dashboard`,
       })
         .catch(() => {
           toast({
@@ -106,7 +106,7 @@ export function EmailSignIn() {
 
       if (response?.status === "complete") {
         await setActive({ session: response.createdSessionId })
-        router.push(`/`)
+        router.push(`/dashboard`)
         return
       }
     }
