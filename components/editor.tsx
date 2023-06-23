@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { ConfigContext } from "@/context/configContext"
 import { EditorView } from "@codemirror/view"
 import { langs, loadLanguage } from "@uiw/codemirror-extensions-langs"
@@ -38,6 +38,7 @@ const getSeletecdTheme = (selectedTheme: string) => {
 }
 
 interface EditorProps {
+  isPro?: boolean
   updateVesion?: boolean
   updateConfig?: {
     id: string
@@ -52,7 +53,7 @@ interface EditorProps {
   }
 }
 
-export function Editor({ updateConfig, updateVesion }: EditorProps) {
+export function Editor({ updateConfig, updateVesion, isPro }: EditorProps) {
   const { state, dispatch } = useContext(ConfigContext)
   // Destrcuturing state
   const { selectedBackground, selectedTheme, code, language, title } = state
@@ -72,10 +73,12 @@ export function Editor({ updateConfig, updateVesion }: EditorProps) {
         background: `${selectedBackground}`,
       }}
     >
-      <div className="absolute left-20 top-6 inline-flex items-center rounded-t-md bg-white px-4 py-2 text-xs font-semibold text-background opacity-50 drop-shadow-[0_1px_1.2px_rgba(0,0,0,0.8)]">
-        <span className="mr-1">created using</span>{" "}
-        <Icons.logo className="h-3 w-3" /> <span className="ml-1">Snap</span>
-      </div>
+      {!isPro && (
+        <div className="absolute left-20 top-6 inline-flex items-center rounded-t-md bg-white px-4 py-2 text-xs font-semibold text-background opacity-50 drop-shadow-[0_1px_1.2px_rgba(0,0,0,0.8)]">
+          <span className="mr-1">created using</span>{" "}
+          <Icons.logo className="h-3 w-3" /> <span className="ml-1">Snap</span>
+        </div>
+      )}
       <CodeMirror
         className={clsx("CodeMirror__Main__Editor", "relative")}
         //@ts-ignore

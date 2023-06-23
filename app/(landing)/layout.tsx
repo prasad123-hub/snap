@@ -14,7 +14,7 @@ export default async function LandingLayoutProps({
   const user = await currentUser()
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
+      {/* <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
         <div className="container flex h-20 items-center justify-between py-6">
           <MainNav items={siteConfig.mainNav} />
           <nav>
@@ -33,7 +33,7 @@ export default async function LandingLayoutProps({
             )}
           </nav>
         </div>
-      </header>
+      </header> */}
       <main className="flex-1">{children}</main>
       {/* <SiteFooter /> */}
     </div>

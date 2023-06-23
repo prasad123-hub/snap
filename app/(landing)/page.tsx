@@ -1,11 +1,9 @@
 import Image from "next/image"
-import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
-import { Button, buttonVariants } from "@/components/ui/button"
 import { MotionA, MotionDiv } from "@/components/client"
 import { CtaButtons } from "@/components/cta-buttons"
-import { SnapCodeArea } from "@/components/snap-code-area"
+import PricingComponent from "@/components/pricing-component"
 
 export default function IndexPage() {
   return (
@@ -101,7 +99,7 @@ export default function IndexPage() {
         <SnapCodeArea />
       </div> */}
       <MotionDiv
-        className="mx-auto mt-4 max-w-7xl rounded-lg px-4 pb-12 sm:px-6 lg:px-8"
+        className="mx-auto mt-4 max-w-5xl px-4 py-12 sm:px-6 lg:px-8"
         initial={{ opacity: 0, top: 20 }}
         animate={{ opacity: 1, top: 0 }}
         transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -114,6 +112,10 @@ export default function IndexPage() {
           alt="Code Snippet"
         />
       </MotionDiv>
+
+      <div className="py-12">
+        <PricingComponent />
+      </div>
     </section>
   )
 }

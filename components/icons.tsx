@@ -2,6 +2,7 @@ import {
   AlertTriangle,
   ArrowDown,
   Bookmark,
+  Check,
   ChevronLeft,
   Copy,
   Download,
@@ -21,6 +22,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  check: Check,
   warning: AlertTriangle,
   trash: Trash,
   settings: Settings,

@@ -9,6 +9,18 @@ export const siteConfig = {
       title: "Dashboard",
       href: "/dashboard",
     },
+    {
+      title: "Pricing",
+      href: "/pricing",
+    },
+    {
+      title: "Snap Collection",
+      href: "/dashboard/collection",
+    },
+    {
+      title: "Billing",
+      href: "/dashboard/billing",
+    },
   ],
   links: {
     twitter: "https://twitter.com",

@@ -1,13 +1,17 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import { ClerkProvider } from "@clerk/nextjs"
+import Link from "next/link"
+import { ClerkProvider, UserButton, currentUser } from "@clerk/nextjs"
 import { dark } from "@clerk/themes"
 
 import { siteConfig } from "@/config/site"
 import { db } from "@/lib/db"
 import { fontHeading, fontSans } from "@/lib/fonts"
+import { getUserSubscriptionPlan } from "@/lib/subscription"
 import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
+import { MainNav } from "@/components/main-nav"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -33,6 +37,10 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
+  const user = await currentUser()
+
+  const subscriptionStatus = await getUserSubscriptionPlan(user?.id as string)
+
   return (
     <>
       <ClerkProvider
@@ -50,6 +58,29 @@ export default async function RootLayout({ children }: RootLayoutProps) {
             )}
           >
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+              <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
+                <div className="container flex h-20 items-center justify-between py-6">
+                  <MainNav
+                    items={siteConfig.mainNav}
+                    subscriptionStatus={subscriptionStatus}
+                  />
+                  <nav>
+                    {user ? (
+                      <UserButton />
+                    ) : (
+                      <Link
+                        href="/sign-in"
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "sm" }),
+                          "px-4"
+                        )}
+                      >
+                        Login
+                      </Link>
+                    )}
+                  </nav>
+                </div>
+              </header>
               <div className="flex-1">{children}</div>
               <Toaster />
               <TailwindIndicator />

@@ -15,11 +15,14 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Icons } from "./icons"
+import { toast } from "./ui/use-toast"
 
 export function BackgroundChanger({
   updateBackgroundVersion,
+  isPro,
 }: {
   updateBackgroundVersion?: string
+  isPro?: boolean
 }) {
   const { state, dispatch } = useContext(ConfigContext)
   const { selectedBackground } = state
@@ -42,16 +45,22 @@ export function BackgroundChanger({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updateBackgroundVersion])
 
-  if (!state.isPro) {
+  if (!isPro) {
     return (
       <>
-        <Link
-          href="/pricing"
-          className={cn(buttonVariants({ variant: "outline" }))}
+        <Button
+          variant="outline"
+          onClick={() => {
+            toast({
+              title: "Upgrade to Pro",
+              description:
+                "Upgrade to Pro to change background. See Pricing for more details.",
+            })
+          }}
         >
           Change Background
           <Icons.arrowDown className="ml-4 h-4 w-4" />
-        </Link>
+        </Button>
       </>
     )
   }

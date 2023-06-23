@@ -77,6 +77,21 @@ function reducer(state: InitialStateType, action: any) {
 function ConfigProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  const customerDetails = async () => {
+    const response = await fetch("/api/user")
+    const data = await response.json()
+
+    if (data) {
+      dispatch({ type: "UPDATE_IS_PRO", payload: data.isPro })
+    }
+
+    console.log("data from ConfigProvider", data)
+  }
+
+  React.useEffect(() => {
+    customerDetails()
+  }, [])
+
   return (
     <ConfigContext.Provider
       value={{

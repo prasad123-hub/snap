@@ -11,7 +11,17 @@ import { Editor } from "./editor"
 import { SaveSnapForm } from "./save-snap-form"
 import { SelectTheme } from "./select-theme"
 
+interface CustomerDetailsProps {
+  description: string
+  isPro: boolean
+  name: string
+  stripeCurrentPeriodEnd: number
+  stripeCustomerId: string
+  stripePriceId: string
+  stripeSubscriptionId: string
+}
 interface SnapCodeAreaProps {
+  subPlan: CustomerDetailsProps
   updateVesion?: boolean
   updateConfig?: {
     id: string
@@ -29,6 +39,7 @@ interface SnapCodeAreaProps {
 export function SnapCodeArea({
   updateConfig,
   updateVesion,
+  subPlan,
 }: SnapCodeAreaProps) {
   const editorRef = useRef<HTMLDivElement>(null)
 
@@ -42,6 +53,7 @@ export function SnapCodeArea({
           <div className="space-x-3">
             <BackgroundChanger
               updateBackgroundVersion={updateConfig?.background as string}
+              isPro={subPlan?.isPro}
             />
             <SelectTheme updateThemeVersion={updateConfig?.theme as string} />
             <SelectLanguage
@@ -51,7 +63,11 @@ export function SnapCodeArea({
           <DownloadAsImage editorRef={editorRef} />
         </div>
         <div ref={editorRef} id="#snippet" className="relative ">
-          <Editor updateConfig={updateConfig} updateVesion={updateVesion} />
+          <Editor
+            updateConfig={updateConfig}
+            updateVesion={updateVesion}
+            isPro={subPlan?.isPro}
+          />
         </div>
         <div className="mt-4">
           <SaveSnapForm updateTitleVersion={updateConfig?.title} />

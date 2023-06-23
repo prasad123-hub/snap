@@ -15,15 +15,9 @@ export async function GET(req: Request) {
       return new Response("Unauthorized", { status: 401 })
     }
 
-    const customer = await db.customer.findUnique({
-      where: { clerkUserId: userId },
-    })
+    const customerDetails = await getUserSubscriptionPlan(userId as string)
 
-    if (!customer) {
-      return new Response("Customer not found", { status: 404 })
-    }
-
-    return new Response(JSON.stringify(customer), { status: 200 })
+    return new Response(JSON.stringify(customerDetails), { status: 200 })
   } catch (error) {
     if (error instanceof Error) {
       return new Response(error.stack || error.toString(), { status: 500 })
