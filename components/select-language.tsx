@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { use, useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 
 import { LANGUAGES } from "@/config/constants"
@@ -13,9 +13,24 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Icons } from "@/components/icons"
 
-export function SelectLanguage() {
+export function SelectLanguage({
+  updateLangauageVersion,
+}: {
+  updateLangauageVersion?: string
+}) {
   const { state, dispatch } = useContext(ConfigContext)
   const { language } = state
+
+  useEffect(() => {
+    if (updateLangauageVersion) {
+      dispatch({
+        type: "UPDATE_LANGUAGE",
+        payload: updateLangauageVersion,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateLangauageVersion])
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

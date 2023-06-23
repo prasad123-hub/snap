@@ -42,7 +42,7 @@ export default async function CollectionPage() {
         {snaps?.length ? (
           <div className="divide-y divide-border rounded-md border">
             {snaps.map(
-              (snap: { id: string; title: string; createdAt: string }) => (
+              (snap: { id: string; title: string; createdAt: Date }) => (
                 <SnapItem key={snap.id} snap={snap} />
               )
             )}

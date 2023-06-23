@@ -14,9 +14,23 @@ import {
 
 import { Icons } from "./icons"
 
-export function SelectTheme() {
+export function SelectTheme({
+  updateThemeVersion,
+}: {
+  updateThemeVersion?: string
+}) {
   const { state, dispatch } = React.useContext(ConfigContext)
   const { selectedTheme } = state
+
+  React.useEffect(() => {
+    if (updateThemeVersion) {
+      dispatch({
+        type: "UPDATE_THEME",
+        payload: updateThemeVersion,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateThemeVersion])
 
   return (
     <DropdownMenu>

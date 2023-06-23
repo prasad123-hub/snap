@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 
 import { GRADIENTS } from "@/config/constants"
@@ -14,7 +14,11 @@ import {
 
 import { Icons } from "./icons"
 
-export function BackgroundChanger() {
+export function BackgroundChanger({
+  updateBackgroundVersion,
+}: {
+  updateBackgroundVersion?: string
+}) {
   const { state, dispatch } = useContext(ConfigContext)
   const { selectedBackground } = state
 
@@ -24,6 +28,17 @@ export function BackgroundChanger() {
       payload: code,
     })
   }
+
+  // If updateBackgroundVersion is passed as prop, then update the version of background when component renders
+  useEffect(() => {
+    if (updateBackgroundVersion) {
+      dispatch({
+        type: "UPDATE_BACKGROUND",
+        payload: updateBackgroundVersion,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateBackgroundVersion])
 
   return (
     <DropdownMenu>

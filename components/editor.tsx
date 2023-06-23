@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 import { EditorView } from "@codemirror/view"
 import { langs, loadLanguage } from "@uiw/codemirror-extensions-langs"
@@ -37,14 +37,37 @@ const getSeletecdTheme = (selectedTheme: string) => {
   return getTheme(selectedTheme)
 }
 
-export function Editor() {
+interface EditorProps {
+  updateVesion?: boolean
+  updateConfig?: {
+    id: string
+    title: string
+    code: string
+    langauge: string
+    theme: string
+    background: string
+    createdAt: Date
+    updatedAt: Date
+    creatorId: string
+  }
+}
+
+export function Editor({ updateConfig, updateVesion }: EditorProps) {
   const { state, dispatch } = useContext(ConfigContext)
   // Destrcuturing state
   const { selectedBackground, selectedTheme, code, language, title } = state
 
+  useEffect(() => {
+    // update code in state using dispatch
+    if (updateConfig) {
+      dispatch({ type: "UPDATE_CODE", payload: updateConfig.code })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateConfig])
+
   return (
     <div
-      className="relative mt-4 min-h-min w-full p-6 lg:p-14 "
+      className="relative mt-4 min-h-min w-full p-14 "
       style={{
         background: `${selectedBackground}`,
       }}

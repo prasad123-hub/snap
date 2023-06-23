@@ -30,18 +30,23 @@ interface Snap {
   createdAt?: string
 }
 
-async function deletePost(postId: string) {
-  const response = await fetch(`/api/posts/${postId}`, {
+async function deleteSnap(snapId: string) {
+  const response = await fetch(`/api/snap/${snapId}`, {
     method: "DELETE",
   })
 
   if (!response?.ok) {
     toast({
       title: "Something went wrong.",
-      description: "Your post was not deleted. Please try again.",
+      description: "Your snap was not deleted. Please try again.",
       variant: "destructive",
     })
   }
+
+  toast({
+    title: "Snap deleted.",
+    description: "Your snap was successfully deleted.",
+  })
 
   return true
 }
@@ -84,7 +89,7 @@ export function SnapOperations({ snap }: SnapOperationsProps) {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>
-              Are you sure you want to delete this post?
+              Are you sure you want to delete this snap?
             </AlertDialogTitle>
             <AlertDialogDescription>
               This action cannot be undone.
@@ -97,7 +102,7 @@ export function SnapOperations({ snap }: SnapOperationsProps) {
                 event.preventDefault()
                 setIsDeleteLoading(true)
 
-                const deleted = await deletePost(snap.id)
+                const deleted = await deleteSnap(snap.id)
 
                 if (deleted) {
                   setIsDeleteLoading(false)

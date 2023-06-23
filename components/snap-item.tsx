@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { formatDate } from "@/utils"
 
 import { Skeleton } from "@/components/ui/skeleton"
 import { SnapOperations } from "@/components/snap-operation"
@@ -6,20 +7,11 @@ import { SnapOperations } from "@/components/snap-operation"
 interface Snap {
   id: string
   title: string
-  createdAt?: string
+  createdAt?: Date
 }
 
 interface SnapItemProps {
   snap: Pick<Snap, "id" | "title" | "createdAt">
-}
-
-function formatDate(input: string | number): string {
-  const date = new Date(input)
-  return date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })
 }
 
 export function SnapItem({ snap }: SnapItemProps) {

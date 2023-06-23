@@ -13,8 +13,7 @@ generator client {
 
 model Customer {
   id            String    @id @default(cuid())
-  clerkUserId   String    @unique @map(name: "clerk_user_id")
-  Snap    Snap[]
+  clerkUserId   String    @unique
 
   stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
   stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
@@ -34,8 +33,6 @@ model Snap {
   createdAt DateTime @default(now()) @map(name: "created_at")
   updatedAt DateTime @default(now()) @map(name: "updated_at")
   creatorId String
-  creator Customer @relation(fields: [creatorId], references: [clerkUserId])
 
   @@map(name: "snaps")
-  @@index([creatorId])
 }

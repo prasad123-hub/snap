@@ -1,4 +1,5 @@
 import {
+  AlertTriangle,
   ArrowDown,
   Bookmark,
   ChevronLeft,
@@ -20,6 +21,7 @@ import {
 export type Icon = LucideIcon
 
 export const Icons = {
+  warning: AlertTriangle,
   trash: Trash,
   settings: Settings,
   wallet: Wallet,

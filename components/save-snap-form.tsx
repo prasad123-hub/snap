@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ConfigContext } from "@/context/configContext"
 import { useUser } from "@clerk/clerk-react"
 
@@ -6,10 +6,24 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { toast } from "./ui/use-toast"
 
-export function SaveSnapForm() {
+export function SaveSnapForm({
+  updateTitleVersion,
+}: {
+  updateTitleVersion?: string
+}) {
   const [saving, setSaving] = useState(false)
   const { state, dispatch } = useContext(ConfigContext)
   const { user } = useUser()
+
+  useEffect(() => {
+    if (updateTitleVersion) {
+      dispatch({
+        type: "UPDATE_TITLE",
+        payload: updateTitleVersion,
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateTitleVersion])
 
   const saveHandler = async (e: any) => {
     e.preventDefault()
@@ -56,11 +70,12 @@ export function SaveSnapForm() {
           name="title"
           type="text"
           className="w-full"
+          value={state.title}
           onChange={(e) => {
             dispatch({ type: "UPDATE_TITLE", payload: e.target.value })
           }}
         />
-        <Button type="submit" variant={"outline"}>
+        <Button type="submit" variant={"outline"} disabled={saving}>
           {saving ? "Saving..." : "Save"}
         </Button>
       </form>
