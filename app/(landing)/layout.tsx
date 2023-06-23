@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { UserButton, currentUser } from "@clerk/nextjs"
-import { User } from "@clerk/nextjs/dist/types/server"
 
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
@@ -15,8 +14,8 @@ export default async function LandingLayoutProps({
   const user = await currentUser()
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="container sticky top-0 z-40 border-b border-border bg-background">
-        <div className="flex h-20 items-center justify-between py-6">
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
+        <div className="container flex h-20 items-center justify-between py-6">
           <MainNav items={siteConfig.mainNav} />
           <nav>
             {user ? (

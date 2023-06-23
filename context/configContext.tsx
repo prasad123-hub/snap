@@ -14,6 +14,7 @@ type InitialStateType = {
   selectedTheme: string
   selectedBackground: string
   title: string
+  isPro: boolean
 }
 
 const initialState: InitialStateType = {
@@ -22,6 +23,7 @@ const initialState: InitialStateType = {
   selectedTheme: DEFAULT_THEME,
   selectedBackground: DEFAULT_BACKGROUND,
   title: DEFAULT_TITLE,
+  isPro: false,
 }
 
 const ConfigContext = createContext<{
@@ -59,6 +61,11 @@ function reducer(state: InitialStateType, action: any) {
       return {
         ...state,
         title: action.payload,
+      }
+    case "UPDATE_IS_PRO":
+      return {
+        ...state,
+        isPro: action.payload,
       }
     default:
       // return error

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { ConfigContext } from "@/context/configContext"
 import { useUser } from "@clerk/clerk-react"
 
 import { NavItem } from "@/types/nav"
@@ -15,39 +16,39 @@ interface MainNavProps {
   items?: NavItem[]
 }
 
-interface CustomerDetailsProps {
-  description: string
-  isPro: boolean
-  name: string
-  stripeCurrentPeriodEnd: number
-  stripeCustomerId: string
-  stripePriceId: string
-  stripeSubscriptionId: string
-}
-
 export function MainNav({ items }: MainNavProps) {
-  const { isSignedIn, user } = useUser()
-  const [customer, setCustomer] = React.useState<CustomerDetailsProps>()
+  const { isSignedIn } = useUser()
+  const [loading, setLoading] = React.useState(false)
+  const { state, dispatch } = React.useContext(ConfigContext)
 
-  const getCustomer = async () => {
-    const customer = await fetch("/api/user")
+  const isPro = state?.isPro
 
-    if (!customer?.ok) {
-      return toast({
-        title: "Something went wrong.",
-        description: "Please refresh the page and try again.",
-        variant: "destructive",
+  const getCustomerDetails = async () => {
+    setLoading(true)
+    try {
+      const response = await fetch("/api/user")
+
+      const data = await response.json()
+
+      dispatch({
+        type: "UPDATE_IS_PRO",
+        payload: data.isPro,
       })
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an error loading the customer details.",
+      })
+    } finally {
+      setLoading(false)
     }
-
-    const customerData = await customer.json()
-    setCustomer(customerData)
   }
 
   React.useEffect(() => {
     if (isSignedIn) {
-      getCustomer()
+      getCustomerDetails()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSignedIn])
 
   return (
@@ -77,15 +78,17 @@ export function MainNav({ items }: MainNavProps) {
         </nav>
       ) : null}
       {isSignedIn && (
-        <span
-          className={`-ml-6 inline-flex items-center rounded-md bg-green-500/10 px-2 py-1 text-xs font-medium ${
-            customer?.isPro ? "text-red-400" : "text-green-400"
-          } ring-1 ring-inset ${
-            customer?.isPro ? "ring-red-500/20" : "ring-green-500/20"
-          }`}
-        >
-          {customer?.isPro ? "Pro" : "Free Trial"}
-        </span>
+        <>
+          <span
+            className={`-ml-6 inline-flex items-center rounded-md  px-2 py-1 text-xs font-medium ring-1 ring-inset ${
+              isPro
+                ? "bg-red-500/10 text-red-400 ring-red-500/20"
+                : "bg-green-500/10 text-green-400 ring-green-500/20"
+            }`}
+          >
+            {isPro ? "Pro" : "Free Trial"}
+          </span>
+        </>
       )}
     </div>
   )

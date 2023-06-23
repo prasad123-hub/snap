@@ -9,14 +9,12 @@ const webhookSecret = process.env.CLERK_WEBHOOK_SECRET || ""
 async function handler(request: Request) {
   const payload = await request.json()
   const headers: Headers = request.headers
-  console.log("Header", headers)
   const heads = {
     "svix-signature": headers.get("svix-signature") as string,
     "svix-id": headers.get("svix-id") as string,
     "svix-timestamp": headers.get("svix-timestamp") as string,
   }
 
-  console.log(heads)
   const wh = new Webhook(webhookSecret)
   let evt: Event | null = null
 

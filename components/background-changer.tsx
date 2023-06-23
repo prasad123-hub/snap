@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react"
+import Link from "next/link"
 import { ConfigContext } from "@/context/configContext"
 
 import { GRADIENTS } from "@/config/constants"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -39,6 +41,20 @@ export function BackgroundChanger({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [updateBackgroundVersion])
+
+  if (!state.isPro) {
+    return (
+      <>
+        <Link
+          href="/pricing"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          Change Background
+          <Icons.arrowDown className="ml-4 h-4 w-4" />
+        </Link>
+      </>
+    )
+  }
 
   return (
     <DropdownMenu>

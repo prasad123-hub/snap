@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^4.20.5",
-    "@clerk/nextjs": "^4.21.7",
+    "@clerk/nextjs": "^4.21.10",
     "@clerk/themes": "^1.7.5",
     "@codemirror/view": "^6.13.2",
     "@hookform/resolvers": "^3.1.1",

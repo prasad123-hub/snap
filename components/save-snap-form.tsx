@@ -67,6 +67,7 @@ export function SaveSnapForm({
       <form onSubmit={saveHandler} className="inline-flex w-full space-x-4">
         <Input
           placeholder="Enter a title for your snap"
+          id="title"
           name="title"
           type="text"
           className="w-full"

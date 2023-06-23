@@ -9,8 +9,8 @@ dependencies:
     specifier: ^4.20.5
     version: 4.20.5(react@18.2.0)
   '@clerk/nextjs':
-    specifier: ^4.21.7
-    version: 4.21.7(next@13.4.5)(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^4.21.10
+    version: 4.21.10(next@13.4.5)(react-dom@18.2.0)(react@18.2.0)
   '@clerk/themes':
     specifier: ^1.7.5
     version: 1.7.5(react@18.2.0)
@@ -351,8 +351,8 @@ packages:
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
 
-  /@clerk/backend@0.23.4:
-    resolution: {integrity: sha512-py20h0WDgNQ2ZNhQVk0O0Rj7Y0yiiHt6el+4bDh4Rm29XLD7YrNSmLzvdaFJUcW7sgaSpYwvNM6AiwNEHoW54g==}
+  /@clerk/backend@0.23.5:
+    resolution: {integrity: sha512-x+NCRvgaVFbAQX2r5hJ6SRI1JnQWD8HAfKxZb+op0KBuKvnk1shpDX67n/23ehx+YG5rQ7FbbKHXyrO5chM5Mw==}
     engines: {node: '>=14'}
     dependencies:
       '@clerk/types': 3.46.0
@@ -377,11 +377,11 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@clerk/clerk-sdk-node@4.10.11:
-    resolution: {integrity: sha512-vdXgJcUcw1gtPFBoaR/xUkDJr8Ltx0ff3S0gi56vYeUO1Zz2UYCQw63ZqOh6uhUUt0BFW8ppXNUEJKQaECBNMA==}
+  /@clerk/clerk-sdk-node@4.10.12:
+    resolution: {integrity: sha512-6LzLFEMZMnUE4O19XOW/6LAoAnHP7mZ2scMCib4dOvTRQxcZz1ql34ZMzewNYKrS6V5loQlslc1bnPlJ2zoX3g==}
     engines: {node: '>=14'}
     dependencies:
-      '@clerk/backend': 0.23.4
+      '@clerk/backend': 0.23.5
       '@clerk/types': 3.46.0
       '@types/cookies': 0.7.7
       '@types/express': 4.17.14
@@ -392,17 +392,17 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@clerk/nextjs@4.21.7(next@13.4.5)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4yOJtbyP8YZxodpgdqxgBD8y+RnEMqCnNllIo/9zTSa+3rvRSDHz/Caw3NCI1wpQe6Id76zb20tpu03uRdc6+Q==}
+  /@clerk/nextjs@4.21.10(next@13.4.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-5G02qZOBwbYvBxbHVPKpINyhZ1a3TLZ3noBExx5JHo8+UbpEp7ENd1TyFF/oO0EWG/VTbloP1Gegjm2XG9KeKw==}
     engines: {node: '>=14'}
     peerDependencies:
       next: '>=10'
       react: ^17.0.2 || ^18.0.0-0
       react-dom: ^17.0.2 || ^18.0.0-0
     dependencies:
-      '@clerk/backend': 0.23.4
+      '@clerk/backend': 0.23.5
       '@clerk/clerk-react': 4.20.5(react@18.2.0)
-      '@clerk/clerk-sdk-node': 4.10.11
+      '@clerk/clerk-sdk-node': 4.10.12
       '@clerk/types': 3.46.0
       next: 13.4.5(@babel/core@7.22.5)(react-dom@18.2.0)(react@18.2.0)
       path-to-regexp: 6.2.1
