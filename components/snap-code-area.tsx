@@ -41,8 +41,8 @@ export function SnapCodeArea({
         id="#snap_code_area"
         className="mx-auto w-full max-w-6xl rounded-md border border-border p-10"
       >
-        <div className="flex flex-col items-center justify-between md:flex-row">
-          <div className="space-x-3">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div className="space-y-3 md:space-x-3 md:space-y-0">
             <BackgroundChanger
               updateBackgroundVersion={updateConfig?.background as string}
               isPro={subPlan?.isPro}
@@ -52,7 +52,9 @@ export function SnapCodeArea({
               updateLangauageVersion={updateConfig?.langauge as string}
             />
           </div>
-          <DownloadAsImage editorRef={editorRef} />
+          <div className="mt-3 md:mt-0">
+            <DownloadAsImage editorRef={editorRef} />
+          </div>
         </div>
         <div ref={editorRef} id="#snippet" className="relative ">
           <Editor
