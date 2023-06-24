@@ -70,7 +70,10 @@ export function SnapCodeArea({
           />
         </div>
         <div className="mt-4">
-          <SaveSnapForm updateTitleVersion={updateConfig?.title} />
+          <SaveSnapForm
+            updatConfig={updateConfig}
+            updateTitleVersion={updateConfig?.title}
+          />
         </div>
       </div>
     </ConfigProvider>

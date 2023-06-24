@@ -13,7 +13,6 @@ const snapCreateScheme = z.object({
 })
 
 export async function POST(req: Request) {
-  console.log("POST /api/snap")
   const { userId, sessionId } = auth()
   try {
     if (!userId || !sessionId) {
@@ -22,15 +21,6 @@ export async function POST(req: Request) {
 
     const json = await req.json()
     const body = snapCreateScheme.parse(json)
-    console.log(body)
-
-    const customer = await db.customer.upsert({
-      where: { clerkUserId: body.creatorId },
-      create: {
-        clerkUserId: body.creatorId,
-      },
-      update: {},
-    })
 
     const snap = await db.snap.create({
       data: {

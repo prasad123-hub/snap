@@ -8,9 +8,9 @@ export default function PricingComponent() {
   return (
     <section className="container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
       <div className="mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]">
-        <h2 className="font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+        <h1 className="bg-gradient-to-b from-gray-100 to-gray-500 bg-clip-text py-4 font-heading text-4xl font-semibold leading-[1.1] tracking-wide text-transparent md:text-5xl">
           Simple, transparent pricing
-        </h2>
+        </h1>
         <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
           Unlock all features including change background and remove watermark
           feature.
@@ -18,7 +18,7 @@ export default function PricingComponent() {
       </div>
       <div className="grid w-full items-start gap-10 rounded-lg border p-10 md:grid-cols-[1fr_200px]">
         <div className="grid gap-6">
-          <h3 className="text-xl font-bold sm:text-2xl">
+          <h3 className="bg-gradient-to-b from-gray-100 to-gray-500 bg-clip-text font-heading text-xl font-semibold leading-[1.1] tracking-wide text-transparent sm:text-2xl">
             What&apos;s included in the PRO plan
           </h3>
           <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2">
@@ -45,7 +45,9 @@ export default function PricingComponent() {
         </div>
         <div className="flex flex-col gap-4 text-center">
           <div>
-            <h4 className="text-7xl font-bold">₹299</h4>
+            <h4 className="bg-gradient-to-b from-gray-100 to-gray-500 bg-clip-text font-heading text-7xl font-semibold leading-[1.1] tracking-wide text-transparent">
+              ₹299
+            </h4>
             <p className="text-sm font-medium text-muted-foreground">
               Billed Monthly
             </p>

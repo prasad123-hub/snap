@@ -11,7 +11,9 @@ import { getUserSubscriptionPlan } from "@/lib/subscription"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Toaster } from "@/components/ui/toaster"
+import Footer from "@/components/footer"
 import { MainNav } from "@/components/main-nav"
+import { MobileNav } from "@/components/mobile-nav"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
@@ -59,8 +61,29 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           >
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
               <header className="sticky top-0 z-40 w-full border-b border-border bg-background">
-                <div className="container flex h-20 items-center justify-between py-6">
+                <div className="container hidden h-20 items-center justify-between py-6  md:flex">
                   <MainNav
+                    items={siteConfig.mainNav}
+                    subscriptionStatus={subscriptionStatus}
+                  />
+                  <nav>
+                    {user ? (
+                      <UserButton />
+                    ) : (
+                      <Link
+                        href="/sign-in"
+                        className={cn(
+                          buttonVariants({ variant: "outline", size: "sm" }),
+                          "px-4"
+                        )}
+                      >
+                        Login
+                      </Link>
+                    )}
+                  </nav>
+                </div>
+                <div className="flex items-center justify-between p-4 md:hidden">
+                  <MobileNav
                     items={siteConfig.mainNav}
                     subscriptionStatus={subscriptionStatus}
                   />
@@ -82,8 +105,10 @@ export default async function RootLayout({ children }: RootLayoutProps) {
                 </div>
               </header>
               <div className="flex-1">{children}</div>
+
               <Toaster />
               <TailwindIndicator />
+              <Footer />
             </ThemeProvider>
           </body>
         </html>
