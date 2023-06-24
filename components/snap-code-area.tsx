@@ -2,6 +2,7 @@
 
 import { useRef } from "react"
 import { ConfigProvider } from "@/context/configContext"
+import { CustomerDetailsProps } from "@/types"
 
 import { SelectLanguage } from "@/components/select-language"
 
@@ -11,15 +12,6 @@ import { Editor } from "./editor"
 import { SaveSnapForm } from "./save-snap-form"
 import { SelectTheme } from "./select-theme"
 
-interface CustomerDetailsProps {
-  description: string
-  isPro: boolean
-  name: string
-  stripeCurrentPeriodEnd: number
-  stripeCustomerId: string
-  stripePriceId: string
-  stripeSubscriptionId: string
-}
 interface SnapCodeAreaProps {
   subPlan: CustomerDetailsProps
   updateVesion?: boolean

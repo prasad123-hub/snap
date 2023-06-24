@@ -1,4 +1,4 @@
-import * as React from "react"
+import { useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 
 import { THEMES } from "@/config/constants"
@@ -19,10 +19,10 @@ export function SelectTheme({
 }: {
   updateThemeVersion?: string
 }) {
-  const { state, dispatch } = React.useContext(ConfigContext)
+  const { state, dispatch } = useContext(ConfigContext)
   const { selectedTheme } = state
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (updateThemeVersion) {
       dispatch({
         type: "UPDATE_THEME",

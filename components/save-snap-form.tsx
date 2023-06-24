@@ -7,10 +7,7 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { toast } from "./ui/use-toast"
 
-export function SaveSnapForm({
-  updateTitleVersion,
-  updatConfig,
-}: {
+interface SaveSnapFormProps {
   updateTitleVersion?: string
   updatConfig?: {
     id: string
@@ -20,7 +17,12 @@ export function SaveSnapForm({
     theme: string
     background: string
   }
-}) {
+}
+
+export function SaveSnapForm({
+  updateTitleVersion,
+  updatConfig,
+}: SaveSnapFormProps) {
   const [saving, setSaving] = useState(false)
   const { state, dispatch } = useContext(ConfigContext)
   const { user } = useUser()

@@ -15,3 +15,13 @@ export type UserSubscriptionPlan = SubscriptionPlan &
     stripeCurrentPeriodEnd: number
     isPro: boolean
   }
+
+export interface CustomerDetailsProps {
+  description: string
+  isPro: boolean
+  name: string
+  stripeCurrentPeriodEnd: number
+  stripeCustomerId: string
+  stripePriceId: string
+  stripeSubscriptionId: string
+}

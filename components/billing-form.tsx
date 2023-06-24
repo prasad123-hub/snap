@@ -3,7 +3,6 @@
 import * as React from "react"
 import { UserSubscriptionPlan } from "@/types"
 import { formatDate } from "@/utils"
-import { auth, useAuth } from "@clerk/nextjs"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"

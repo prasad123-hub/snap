@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
+import { useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 import { EditorView } from "@codemirror/view"
 import { langs, loadLanguage } from "@uiw/codemirror-extensions-langs"
@@ -53,13 +53,11 @@ interface EditorProps {
   }
 }
 
-export function Editor({ updateConfig, updateVesion, isPro }: EditorProps) {
+export function Editor({ updateConfig, isPro }: EditorProps) {
   const { state, dispatch } = useContext(ConfigContext)
-  // Destrcuturing state
-  const { selectedBackground, selectedTheme, code, language, title } = state
+  const { selectedBackground, selectedTheme, code, language } = state
 
   useEffect(() => {
-    // update code in state using dispatch
     if (updateConfig) {
       dispatch({ type: "UPDATE_CODE", payload: updateConfig.code })
     }
@@ -97,7 +95,6 @@ export function Editor({ updateConfig, updateVesion, isPro }: EditorProps) {
         }}
         indentWithTab
         onChange={(value) => {
-          // setCode(value)
           dispatch({ type: "UPDATE_CODE", payload: value })
         }}
       >

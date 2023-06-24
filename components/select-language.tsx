@@ -1,4 +1,4 @@
-import { use, useContext, useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { ConfigContext } from "@/context/configContext"
 
 import { LANGUAGES } from "@/config/constants"

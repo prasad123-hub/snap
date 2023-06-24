@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { CustomerDetailsProps } from "@/types"
 import { useUser } from "@clerk/clerk-react"
 
 import { NavItem } from "@/types/nav"
@@ -9,15 +10,6 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 
-interface CustomerDetailsProps {
-  description: string
-  isPro: boolean
-  name: string
-  stripeCurrentPeriodEnd: number
-  stripeCustomerId: string
-  stripePriceId: string
-  stripeSubscriptionId: string
-}
 interface MainNavProps {
   items?: NavItem[]
   subscriptionStatus: CustomerDetailsProps

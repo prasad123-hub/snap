@@ -1,10 +1,8 @@
 import { useContext, useEffect } from "react"
-import Link from "next/link"
 import { ConfigContext } from "@/context/configContext"
 
 import { GRADIENTS } from "@/config/constants"
-import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -17,13 +15,15 @@ import {
 import { Icons } from "./icons"
 import { toast } from "./ui/use-toast"
 
+interface BackgroundChangeProps {
+  isPro?: boolean
+  updateBackgroundVersion?: string
+}
+
 export function BackgroundChanger({
   updateBackgroundVersion,
   isPro,
-}: {
-  updateBackgroundVersion?: string
-  isPro?: boolean
-}) {
+}: BackgroundChangeProps) {
   const { state, dispatch } = useContext(ConfigContext)
   const { selectedBackground } = state
 

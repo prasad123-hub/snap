@@ -1,8 +1,9 @@
 "use client"
 
-import * as React from "react"
+import { useState } from "react"
 import Link, { LinkProps } from "next/link"
 import { useRouter } from "next/navigation"
+import { CustomerDetailsProps } from "@/types"
 import { useUser } from "@clerk/clerk-react"
 import { SidebarOpen } from "lucide-react"
 
@@ -13,23 +14,13 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Icons } from "@/components/icons"
 
-interface CustomerDetailsProps {
-  description: string
-  isPro: boolean
-  name: string
-  stripeCurrentPeriodEnd: number
-  stripeCustomerId: string
-  stripePriceId: string
-  stripeSubscriptionId: string
-}
-
 interface MobileNavProps {
   items?: NavItem[]
   subscriptionStatus: CustomerDetailsProps
 }
 
 export function MobileNav({ items, subscriptionStatus }: MobileNavProps) {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const { isSignedIn } = useUser()
 
   return (
