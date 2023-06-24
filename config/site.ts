@@ -24,7 +24,8 @@ export const siteConfig = {
   ],
   links: {
     twitter: "https://twitter.com",
-    github: "https://github.com",
+    github: "https://github.com/prasad123-hub/snap.git",
     docs: "",
   },
+  url: "https://snap.npmstack.com",
 }
