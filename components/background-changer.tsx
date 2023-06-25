@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { ConfigContext } from "@/context/configContext"
 
 import { GRADIENTS } from "@/config/constants"
@@ -26,6 +27,7 @@ export function BackgroundChanger({
 }: BackgroundChangeProps) {
   const { state, dispatch } = useContext(ConfigContext)
   const { selectedBackground } = state
+  const router = useRouter()
 
   const handleBackgroundChange = (code: string) => {
     dispatch({
@@ -53,9 +55,9 @@ export function BackgroundChanger({
           onClick={() => {
             toast({
               title: "Upgrade to Pro",
-              description:
-                "Upgrade to Pro to change background. See Pricing for more details.",
+              description: "Upgrade to Pro to change background",
             })
+            router.push("/dashboard/billing")
           }}
         >
           Change Background

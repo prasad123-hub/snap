@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link, { LinkProps } from "next/link"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { CustomerDetailsProps } from "@/types"
 import { useUser } from "@clerk/clerk-react"
 import { SidebarOpen } from "lucide-react"
@@ -51,6 +51,7 @@ export function MobileNav({ items, subscriptionStatus }: MobileNavProps) {
                   key={item.href}
                   href={item.href}
                   onOpenChange={setOpen}
+                  className="hover:text-green-600"
                 >
                   {item.title}
                 </MobileLink>
@@ -90,6 +91,7 @@ function MobileLink({
   ...props
 }: MobileLinkProps) {
   const router = useRouter()
+  const pathname = usePathname()
   return (
     <Link
       href={href}
@@ -97,7 +99,7 @@ function MobileLink({
         router.push(href.toString())
         onOpenChange?.(false)
       }}
-      className={cn(className)}
+      className={cn(className, pathname === href && "text-green-600")}
       {...props}
     >
       {children}

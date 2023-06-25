@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { CustomerDetailsProps } from "@/types"
 import { useUser } from "@clerk/clerk-react"
 
@@ -17,6 +18,7 @@ interface MainNavProps {
 
 export function MainNav({ items, subscriptionStatus }: MainNavProps) {
   const { isSignedIn } = useUser()
+  const pathname = usePathname()
 
   return (
     <div className="flex gap-6 md:gap-10">
@@ -34,8 +36,9 @@ export function MainNav({ items, subscriptionStatus }: MainNavProps) {
                   key={index}
                   href={isSignedIn ? item.href : "/sign-in"}
                   className={cn(
-                    "flex items-center text-sm font-medium text-muted-foreground",
-                    item.disabled && "cursor-not-allowed opacity-80"
+                    "flex items-center text-sm font-medium text-muted-foreground hover:text-green-600",
+                    item.disabled && "cursor-not-allowed opacity-80",
+                    pathname === item.href && "text-green-600"
                   )}
                 >
                   {item.title}

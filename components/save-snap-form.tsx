@@ -64,6 +64,7 @@ export function SaveSnapForm({
         description: "View in Snap Collection.",
       })
       router.push("/dashboard/collection")
+      router.refresh()
     } else {
       setSaving(false)
       toast({
@@ -99,6 +100,7 @@ export function SaveSnapForm({
         description: "You can view your updated snap in your collection.",
       })
       router.push("/dashboard/collection")
+      router.refresh()
     } else {
       setSaving(false)
       toast({

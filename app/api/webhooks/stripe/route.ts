@@ -7,8 +7,6 @@ import { stripe } from "@/lib/stripe"
 export async function POST(req: Request) {
   const body = await req.text()
   const signature = headers().get("Stripe-Signature") as string
-  console.log("body", body)
-  console.log("signature", signature)
   let event: Stripe.Event
 
   try {
@@ -25,8 +23,6 @@ export async function POST(req: Request) {
 
   //   @ts-ignore
   const session = event.data.object as Stripe.Checkout.Session
-
-  console.log("session strip", session)
 
   //   @ts-ignore
   if (event.type === "checkout.session.completed") {
